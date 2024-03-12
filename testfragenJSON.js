@@ -1,0 +1,527 @@
+var questions = [
+    {
+        id: 29,
+        title: "JavaScript If Else Script",
+        question_type: "code",
+        question: "Was gibt dieses JavaScript aus?",
+        code: "a = <span style='color:#995BFF;'>false</span>;<br><span style='color:#FF3399;'>if</span>(a) {<br><span style='color:#FFC90E;'>alert</span>('Moin');<br>}<br><span style='color:#FF3399;'>else</span> {<br><span style='color:#FFC90E;'>alert</span>('Klausur');<br>}<br>",
+        correct_answer: [2], 
+        score: 4,
+        possible_answers: {
+            1: "Moin",
+            2: "Klausur",
+            3: "Moin :  Klausur",
+            4: "false ? Moin : Klausur"
+        }
+    },
+    {
+        id: 1,
+        title: "CSS background-color",
+        question_type: "text",
+        question: "Welche CSS-Eigenschaft verwendet man, um die Hintergrundfarbe festzulegen?",
+        correct_answer: [2],
+        score: 2,
+        answer_type: "single",
+        possible_answers: {
+            1: "bgcolor",
+            2: "background-color",
+            3: "color"
+        }
+    },
+    {
+        id: 2,
+        title: "CSS background-color für h1",
+        question_type: "text",
+        question: "Wie fügt man die Hintergrundfarbe für alle <xmp><h1></xmp> Elemente hinzu?",
+        correct_answer: [3],
+        score: 2,
+        answer_type: "single",
+        possible_answers: {
+            1: "h1.all {background-color:#FFFFFF;}",
+            2: "al.h1 {background-color:#FFFFFF;}",
+            3: "h1 {background-color:#FFFFFF;}"
+        }
+    },
+    {
+        id: 3,
+        title: "CSS Bedeutung",
+        question_type: "text",
+        question: "Wofür steht CSS?",
+        correct_answer: [2],
+        score: 2,
+        answer_type: "single",
+        possible_answers: {
+            1: "Creative Style Sheets",
+            2: "Cascading Style Sheets",
+            3: "Computer Style Sheets",
+            4: "Colorful Style Sheets"
+        }
+    },
+    {
+        id: 4,
+        title: "CSS Color",
+        question_type: "text",
+        question: "Welche CSS Eigenschaft hat Einfluss auf die <br> Textfarbe eines Elements?",
+        correct_answer: [1],
+        score: 2,
+        answer_type: "single",
+        possible_answers: {
+            1: "color",
+            2: "text-color",
+            3: "fg-color",
+        }
+    },
+    {
+        id: 5,
+        title: "CSS Definition external Style Sheet",
+        question_type: "text",
+        question: "Wo ist die richtige Stelle im HTML-Dokument,<br> um ein externes Style-Sheet zu referenzieren?",
+        correct_answer: [3],
+        score: 2,
+        answer_type: "single",
+        possible_answers: {
+            1: "Am Ende des Dokuments",
+            2: "Im <body> Bereich",
+            3: "Im <head> Bereich",
+        }
+    },
+    {
+        id: 6,
+        title: "CSS Deklaration",
+        question_type: "text",
+        question: "Eine CSS-Deklaration wird beendet mit?",
+        correct_answer: [3],
+        score: 2,
+        answer_type: "single",
+        possible_answers: {
+            1: ". - (Punkt)",
+            2: "! - (Ausrufezeichen)",
+            3: "; - (Semikolon)",
+            4: ": - (Doppelpunkt)"
+        }
+    },
+    {
+        id: 7,
+        title: "CSS external style sheet",
+        question_type: "text",
+        question: "Wie lautet die korrekte HTML-Syntax um <br> auf ein externes Style-Sheets zu referenzieren?",
+        correct_answer: [1],
+        score: 2,
+        answer_type: "single",
+        possible_answers: {
+            1: "<link rel=\"stylesheet\" type=\"text/css\" href=\"mystyle.css\">",
+            2: "<style src=\"mystyle.css\">",
+            3: "<stylesheet>mystyle.css</stylesheet>"
+        }
+    },
+    {
+        id: 8,
+        title: "CSS Farbe Weiß",
+        question_type: "text",
+        question: "Was ist keine gültige Schreibweise für die Farbe Weiß?",
+        correct_answer: [2],
+        score: 2,
+        answer_type: "single",
+        possible_answers: {
+            1: "#FFF",
+            2: "#ff",
+            3: "rgba(255,255,255,1)",
+            4: "white"
+        }
+    },
+    {
+        id: 9,
+        title: "CSS font",
+        question_type: "text",
+        question: "Welche CSS-Eigenschaft verwendet man,<br> um die Schriftart zu ändern?",
+        correct_answer: [3],
+        score: 2,
+        answer_type: "single",
+        possible_answers: {
+            1: "font-weight",
+            2: "font-style",
+            3: "font-family"
+        }
+    },
+    {
+        id: 10,
+        title: "CSS font-weight",
+        question_type: "text",
+        question: "Welche Syntax ist korrekt, wenn alle <xmp><p></xmp> Elemente fett dargestellt werden sollen?",
+        correct_answer: [3,5] ,
+        score: 2,
+        answer_type: "multi",
+        possible_answers: {
+            1: "p { text-size:bold; }",
+            2: "p { font-size:bold; }",
+            3: "p { font-weight:bold; }",
+            4: "p style=\"font-size:bold\" ",
+            5: "p { font-weight:800; }"
+        }
+    },
+    {
+        id: 11,
+        title: "CSS hyperlinks",
+        question_type: "text",
+        question: "Welche Syntax zeigt Hyperlinks ohne Unterstreichung an?",
+        correct_answer: [2],
+        score: 2,
+        answer_type: "single",
+        possible_answers: {
+            1: "a {underline:none;}",
+            2: "a {text-decoration:none;}",
+            3: "a {text-decoration:no-underline;}",
+            4: "a {decoration:no-underline;}"
+        }
+    },
+    {
+        id: 12,
+        title: "CSS inline Style sheets",
+        question_type: "text",
+        question: "Welches HTML Attribut benötigt man,<br> um inline styles zu definieren?",
+        correct_answer: [1],
+        score: 2,
+        possible_answers: {
+            1: "style",
+            2: "styles",
+            3: "class",
+            4: "font"
+        }
+    },
+    {
+        id: 13,
+        title: "CSS internal style sheet",
+        question_type: "text",
+        question: "Welches HTML-Tag benötigt man,<br> um interne style sheets zu definieren?",
+        correct_answer: [3],
+        score: 2,
+        possible_answers: {
+            1: "<script>",
+            2: "<css>",
+            3: "<style>"
+        }
+    },
+    {
+        id: 14,
+        title: "CSS Kommentare",
+        question_type: "text",
+        question: "Wie werden Kommentare in einer CSS-Datei geschrieben?",
+        correct_answer: [3],
+        score: 2,
+        possible_answers: {
+            1: "// Das ist ein Kommentar //",
+            2: "// Das ist ein Kommentar",
+            3: "/* Das ist ein Kommentar */",
+            4: "'Das ist ein Kommentar'"
+        }
+    },
+    {
+        id: 15,
+        title: "CSS Rahmen",
+        question_type: "text",
+        question: "Welche der folgenden Eigenschaften gibt an, <br> ob ein Rahmen durchgezogen, gestrichelt, <br>doppelt oder einer der anderen möglichen Werte sein soll?",
+        correct_answer: [2],
+        score: 2,
+        possible_answers: {
+            1: "border-color",
+            2: "border-style",
+            3: "border-width",
+            4: "border-bottom-color"
+        }
+    },
+    {
+        id: 16,
+        title: "CSS text-size",
+        question_type: "text",
+        question: "Welche CSS Eigenschaft hat Einfluss auf die Textgröße?",
+        correct_answer: [2],
+        score: 2,
+        possible_answers: {
+            1: "font-style",
+            2: "font-size",
+            3: "text-style",
+            4: "text-size"
+        }
+    },
+    {
+        id: 17,
+        title: "PHP Ausführung",
+        question_type: "text",
+        question: "Wo wird PHP ausgeführt?",
+        correct_answer: [3],
+        score: 2,
+        possible_answers: {
+            1: "gar nicht, PHP ist statisch",
+            2: "clientseitig",
+            3: "serverseitig"
+        }
+    },
+    {
+        id: 18,
+        title: "JavaScript im HTML",
+        question_type: "text",
+        question: "Mit welchem HTML-Tag kann JavaScript Code in das HTML Dokument eingebunden werden?",
+        correct_answer: [3],
+        score: 2,
+        possible_answers: {
+            1: "<code /* Quellcode */  code>",
+            2: "<JavaScript> /* Quellcode */ </JavaScript>",
+            3: "<script> /* Quellcode */ </script>",
+            4: "<?php /* Quellcode */  ?>"
+        }
+    },
+    {
+        id: 19,
+        title: "JavaScript Kontrollstrukturen",
+        question_type: "text",
+        question: "Welches der folgenden Codebeispiele <br>ist keine Kontrollstruktur in JavaScript?",
+        correct_answer: [2],
+        score: 2,
+        answer_type: "code",
+        possible_answers: {
+            1: "if(Bedingung){<br>//führe Code aus }<br>else {<br> // führe anderen Code aus }",
+            2: "let n = Math.floor(Math.random() * 10);",
+            3: "for(var i = 0; i < 10; i++) {<br>//führe Code aus <br>}",
+            4: "while(Bedingung) {<br> //führe Code aus <br>}"
+        }
+    },
+    {
+        id: 20,
+        title: "JavaScript Variablen",
+        question_type: "text",
+        question: "Wie wird in JavaScript eine Variable initialisiert?",
+        correct_answer: [3],
+        score: 2,
+        possible_answers: {
+            1: "eineVariable = 3",
+            2: "var eineVariable;",
+            3: "let eineVariable = 3;"
+        }
+    },
+    {
+        id: 21,
+        title: "CSS border",
+        question_type: "text",
+        question: "Wie lautet die Syntax um einen Rahmen <br>in folgender Weise darzustellen?<br>Oberer Rahmen = 10px <br>Unterer Rahmen = 5px<br>Linker Rahmen = 20px<br> Rechter Rahmen = 1px",
+        correct_answer: [2],
+        score: 4,
+        possible_answers: {
+            1: "border-width: 10px 20px 5px 1px;",
+            2: "border-width: 10px 1px 5px 20px;",
+            3: "border-width: 5px 20px 10px 1 px;",
+            4: "border width: 10px 5px 20px 1 px;"
+        }
+    },
+    {
+        id: 22,
+        title: "CSS class",
+        question_type: "text",
+        question: "Wie wird ein Element mit einer class 'blue' in einer <br>style-Anweisung angesprochen?",
+        correct_answer: [4],
+        score: 4,
+        possible_answers: {
+            1: "blue",
+            2: "#blue",
+            3: "*blue",
+            4: ".blue"
+        }
+    },
+    {
+        id: 23,
+        title: "CSS id",
+        question_type: "text",
+        question: "Wie wird ein Element mit einer id 'red'<br> in einer Style-Anweisung angesprochen?",
+        correct_answer: [1],
+        score: 4,
+        possible_answers: {
+            1: "#red",
+            2: "red",
+            3: ".red",
+            4: "*red"
+        }
+    },
+    {
+        id: 24,
+        title: "CSS list-Eigenschaften",
+        question_type: "text",
+        question: "Wie wird eine Liste mit rechteckigen <br>Aufzählungszeichen erstellt?",
+        correct_answer: [3],
+        score: 4,
+        possible_answers: {
+            1: "list-type: square;",
+            2: "list:square;",
+            3: "list-style-type:square;"
+        }
+    },
+    {
+        id: 25,
+        title: "CSS margin",
+        question_type: "text",
+        question: "Welche Eigenschaft wird verwendet um den linken <br> margin-Wert eines Elements zu ändern?",
+        correct_answer: [1],
+        score: 4,
+        possible_answers: {
+            1: "margin-left",
+            2: "indent",
+            3: "padding-left"
+        }
+    },
+    {
+        id: 26,
+        title: "CSS mehrere Selektoren",
+        question_type: "text",
+        question: "Wie werden Selektoren gruppiert?",
+        correct_answer: [1],
+        score: 4,
+        possible_answers: {
+            1: "Jeweils getrennt mit einem Komma",
+            2: "Jeweils getrennt mit einem Leerzeichen",
+            3: "Jeweils getrennt mit einem +-Zeichen"
+        }
+    },
+    {
+        id: 27,
+        title: "CSS padding property",
+        question_type: "text",
+        question: "Sind negative Werte erlaubt, wenn die <br> padding Eigenschaft verwendet wird?",
+        correct_answer: [2],
+        score: 4,
+        possible_answers: {
+            1: "Ja",
+            2: "Nein"
+        }
+    },
+    {
+        id: 28,
+        title: "JavaScript Funktionendeklaration",
+        question_type: "text",
+        question: "Wie werden in JavaScript Funktionen deklariert?",
+        correct_answer: [1],
+        score: 4,
+        possible_answers: {
+            1: "function myFunction()",
+            2: "sub myFunction()",
+            3: "create myFunction()",
+            4: "myFunction()"
+        }
+    },
+    {
+        id: 29,
+        title: "JavaScript If Else Script",
+        question_type: "code",
+        question: "Was gibt dieses JavaScript aus?",
+        code: "a = false;<br><span style='color:#ff0385;'>if</span>(a) {<br>alert('Moin');<br>}<br>else {<br>alert('Klausur');<br>}<br>",
+        correct_answer: [2],
+        score: 4,
+        possible_answers: {
+            1: "Moin",
+            2: "Klausur",
+            3: "Moin :  Klausur",
+            4: "false ? Moin : Klausur"
+        }
+    },
+    {
+        id: 30,
+        title: "JavScript Kommentar",
+        question: "Wie kann ich in JavaScript einen Kommentar einleiten?",
+        correct_answer: [1,2],
+        score: 4,
+        possible_answers: {
+            1: "/*    */",
+            2: "//",
+            3: "' ",
+            4: "<!--   -->",
+            5: "*/    /*"
+        }
+    },
+    {
+        id: 31,
+        title: "JavScript Variablen Zuweisung",
+        question: "Was gibt das folgende Skript aus?",
+        correct_answer: [3],
+        score: 4,
+        possible_answers: {
+            1: "Error",
+            2: "Lernfeld10a Lernfeld10a",
+            3: "Lernfeld10a Klausur",
+            4: "Klausur Klausur"
+        }
+    },
+    {
+        id: 32,
+        title: "JavaScript Variablendeklaration",
+        question: "Welche der folgenden Variablendeklarationen <br>sind in JavaScript gültig?",
+        correct_answer: [2,3,5],
+        score: 4,
+        possible_answers: {
+            1: "eine-neue-variable",
+            2: "EINEneueVariable",
+            3: "IT_Hugo",
+            4: "123ITHugo",
+            5: "ithugo"
+        }
+    },
+    {
+        id: 33,
+        title: "CSS id height color width",
+        question: "Welches der folgenden Anweisung legt eine id <br>namens header mit einer Breite von 750 px, <br>einer Höhe von 30 px und der Schriftfarbe Schwarz an?",
+        correct_answer: [1],
+        score: 6,
+        possible_answers: {
+            1: "#header { height:30px;width: 750px;color: black;}",
+            2: ".header { height:30px;width: 750px;color: black;}",
+            3: "#header { height:30px;width: 750px;text: black;}",
+            4: "*header { height:30px;width: 750px;color: black;}"
+        }
+    },
+    {
+        id: 34,
+        title: "JavaScript Kopfschleife",
+        question: "Wie viele Sterne werden durch das folgende Skript in der Konsole ausgegeben?",
+        correct_answer: [4],
+        score: 6,
+        possible_answers: {
+            1: "zwei",
+            2: "einer",
+            3: "gar keinen",
+            4: "das Skript endet in einer unendlichen Schleife"
+        }
+    },
+    {
+        id: 35,
+        title: "JavaScript Geltungsbereich",
+        question: "Welcher Wert wird im folgenden Skript für a in der alert() Funktion ausgegeben?",
+        correct_answer: [2],
+        score: 4,
+        possible_answers: {
+            1: "11",
+            2: "8",
+            3: "5",
+            4: "13"
+        }
+    },
+    {
+        id: 36,
+        title: "JavaScript Mehrfachzuweisungen",
+        question: "Welchen Wert gibt das folgende Skript für x aus?",
+        correct_answer: [3],
+        score: 6,
+        possible_answers: {
+            1: "11",
+            2: "12",
+            3: "25",
+            4: "33"
+        }
+    },
+    {
+        id: 37,
+        title: "JavaScript switch String",
+        question: "Eine Switch-Case Anweisung <br>erlaubt den Vergleich mit Strings. <br> Ist diese Aussage richtig?",
+        correct_answer: [1],
+        score: 4,
+        possible_answers: {
+            1: "Wahr",
+            2: "Falsch"
+        }
+    },
+]

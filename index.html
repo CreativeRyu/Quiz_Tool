@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./quiz_style.css">
+    <link href="https://fonts.cdnfonts.com/css/superhelio" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/kemco-pixel" rel="stylesheet">
+    <title>Test Vorbereitung</title>
+</head>
+
+<body>
+    <div class="panel-container">
+        <div class="panel-item">
+
+            <!-- Anzeige Bereich -->
+            <div class="screen-container">
+                <div class="lamp"></div>
+                <div class="text-panel">
+                    <div class="hud-container">
+                        <p id="Number" class="hud-item"><br></p>
+                        <p id="questions-left" class="hud-item"></p>
+                        <p id="Score" class="hud-item"></p>
+                    </div>
+                    <h1 id="Title">Test Vorbereitung</h1>
+                    <p id="Question" class="blink">Press Start</p>
+                </div>
+                <button class="toggle-code-button" onclick="toggleCodeSnippet()"></button>
+            </div>
+        </div>
+
+        <!-- User Interface Bereich -->
+        <div class="interface-container">
+            <div class="ui-element"></div>
+            <div id="question-panel-item" class="panel-item" class="ui-element">
+                <div class="selection-container">
+
+                </div>
+            </div>
+            <div class="ui-element">
+                <button class="next-question-button" onclick="start_new_turn();"></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./testfragenJSON.js"></script>
+    <script src="./quiz.js"></script>
+</body>
+
+</html>
