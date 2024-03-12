@@ -11,15 +11,10 @@
 </head>
 
 <body>
-    <div class="navigation">
-        <button onclick="loadQuestions('./test_webdev.json')">Test Webentwicklung</button>
-        <button onclick="loadQuestions('./test.json')">Test</button>
-        <!-- Weitere Buttons für andere Fragekataloge -->
-    </div>
-
     <div class="panel-container">
-        <div class="panel-item">
+        <!-- Das Steuerkreuz -->
 
+        <div class="panel-item">
             <!-- Anzeige Bereich -->
             <div class="screen-container">
                 <div class="lamp"></div>
@@ -38,13 +33,22 @@
 
         <!-- User Interface Bereich -->
         <div class="interface-container">
-            <div class="ui-element"></div>
+            <div class="ui-element">
+                <div class="d-pad">
+                    <button id="up">↑</button>
+                    <button id="left">←</button>
+                    <div id="center"></div>
+                    <div id="center-top"></div>
+                    <button id="right">→</button>
+                    <button id="down">↓</button>
+                </div>
+            </div>
             <div id="question-panel-item" class="panel-item" class="ui-element">
                 <div class="selection-container">
-
                 </div>
             </div>
             <div class="ui-element">
+                <div class="button-embedded"></div>
                 <button class="next-question-button" onclick="start_new_turn();"></button>
             </div>
         </div>

@@ -111,7 +111,7 @@ code {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 620px;
+    width: 540px;
     height: 400px;
     margin: 1px auto;
     border: 5px #dadada;
@@ -127,10 +127,10 @@ code {
     position: relative;
     background: #f6fff0;
     height: 30px;
-    width: 560px;
+    width: 480px;
     margin: 15px;
     padding: 5px;
-    font-size: 18px;
+    font-size: 15px;
     box-shadow: 0px 4px 4px 4px grey;
     border: solid 2px grey;
     border-radius: 5px;
@@ -153,10 +153,10 @@ code {
     background: #241f22;
     text-align: left;
     height: 140px;
-    width: 254px;
+    width: 210px;
     margin: 15px;
     padding: 10px;
-    font-size: 18px;
+    font-size: 15px;
     box-shadow: 0px 4px 4px 4px grey;
     border: solid 2px grey;
     border-radius: 5px;
@@ -233,6 +233,17 @@ p {
     box-shadow: inset 0px 0px 3px 3px rgb(150, 0, 50);
 }
 
+.button-embedded {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #d5d5d5;
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    z-index: -1;
+}
+
 .toggle-code-button {
     position: absolute;
     width: 80px;
@@ -243,7 +254,7 @@ p {
     background: #aeaeae;
     cursor: pointer;
     top: 114%;
-    left: 43%;
+    left: 44%;
 }
 
 .toggle-code-button:hover {
@@ -279,12 +290,69 @@ p {
     transform: translate(-50%, -50%);
     padding: 20px;
     overflow: auto;
-    /* Falls der Code zu lang ist */
     max-height: 80%;
-    /* Maximalhöhe des Fensters */
     width: 90%;
-    /* Maximalbreite des Fensters */
     white-space: pre-wrap;
-    /* Zeilenumbrüche beibehalten */
     margin: 0;
+}
+
+.d-pad {
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    width: 150px; /* Breite des dPad anpassen */
+    height: 150px; /* Höhe des dPad anpassen */
+    cursor: pointer;
+    right: 40px;
+    z-index: 999;
+}
+
+.d-pad button {
+    position: absolute;
+    width: 50px; /* Breite der Buttons anpassen */
+    height: 50px; /* Höhe der Buttons anpassen */
+    font-size: 24px;
+    background-color: #444444;
+    color: #626262;
+    border-style: none;
+    z-index: 999;
+}
+
+.d-pad #up {
+    grid-row: 1;
+    grid-column: 2;
+    z-index: 999;
+    border-radius: 7px 7px 0px 0px;
+}
+
+.d-pad #left {
+    grid-row: 2;
+    grid-column: 1;
+    border-radius: 7px 0px 0px 7px;
+}
+
+.d-pad #center {
+    grid-row: 2;
+    grid-column: 2;
+    background-color: #444444;
+}
+.d-pad #center-top {
+    grid-row: 2;
+    grid-column: 2;
+    background-color: #353535;
+    border-radius: 50%;
+    z-index:999;
+}
+
+.d-pad #right {
+    grid-row: 2;
+    grid-column: 3;
+    border-radius: 0px 7px 7px 0px;
+}
+
+.d-pad #down {
+    grid-row: 3;
+    grid-column: 2;
+    border-radius: 0px 0px 7px 7px;
 }
