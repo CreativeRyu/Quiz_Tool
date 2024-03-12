@@ -8,7 +8,10 @@ var selectionContainer = document.querySelector(".selection-container");
 let correctAnswerFlags = [];
 var isCodePresented = false;
 
-console.log(questions.length);
+// TODO: Importer für JSON schreiben
+// TODO: Option zum Auswählen unterschiedlicher JSONS 
+// TODO: Zurück zum Hauptmenü
+// TODO: mit Steuerkreuz zwischen den JSON Dateien auf dem Bildschirm wählen
 
 function start_new_turn() {
     if (isCodePresented) {return;}

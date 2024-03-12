@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "title": "The Creator",
+        "question_type": "text",
+        "question": "Wer hat Dragonball erschaffen",
+        "correct_answer": [2],
+        "score": 2,
+        "answer_type": "single",
+        "possible_answers": {
+            "1": "Ich",
+            "2": "Akira Toriyama",
+            "3": "Eiji Aonuma"
+        }
+    }
+]    
