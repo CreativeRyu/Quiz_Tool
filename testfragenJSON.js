@@ -1,20 +1,5 @@
 var questions = [
     {
-        id: 29,
-        title: "JavaScript If Else Script",
-        question_type: "code",
-        question: "Was gibt dieses JavaScript aus?",
-        code: "a = <span style='color:#995BFF;'>false</span>;<br><span style='color:#FF3399;'>if</span>(a) {<br><span style='color:#FFC90E;'>alert</span>('Moin');<br>}<br><span style='color:#FF3399;'>else</span> {<br><span style='color:#FFC90E;'>alert</span>('Klausur');<br>}<br>",
-        correct_answer: [2], 
-        score: 4,
-        possible_answers: {
-            1: "Moin",
-            2: "Klausur",
-            3: "Moin :  Klausur",
-            4: "false ? Moin : Klausur"
-        }
-    },
-    {
         id: 1,
         title: "CSS background-color",
         question_type: "text",
@@ -410,14 +395,14 @@ var questions = [
         title: "JavaScript If Else Script",
         question_type: "code",
         question: "Was gibt dieses JavaScript aus?",
-        code: "a = false;<br><span style='color:#ff0385;'>if</span>(a) {<br>alert('Moin');<br>}<br>else {<br>alert('Klausur');<br>}<br>",
-        correct_answer: [2],
+        code: "x <span style='color:#FF3399;'>=</span> <span style='color:#995BFF;'>false</span>;<br>x <span style='color:#FF3399;'>?</span> <span style='color:#FFC90E;'>alert</span><span style='color:#FFD700;'>(</span><span style='color:#CB6F39;'>'Guten Morgen'</span><span style='color:#FFD700;'>)</span> <span style='color:#FF3399;'>:</span> <span style='color:#FFC90E;'>alert</span><span style='color:#FFD700;'>(</span><span style='color:#CB6F39;'>'Welt'</span><span style='color:#FFD700;'>)</span>;",
+        correct_answer: [2], 
         score: 4,
         possible_answers: {
-            1: "Moin",
-            2: "Klausur",
-            3: "Moin :  Klausur",
-            4: "false ? Moin : Klausur"
+            1: "Guten Morgen",
+            2: "Welt",
+            3: "Guten Morgen : Welt",
+            4: "false ? Guten Morgen : Welt"
         }
     },
     {
@@ -437,28 +422,31 @@ var questions = [
     {
         id: 31,
         title: "JavScript Variablen Zuweisung",
+        question_type: "code",
         question: "Was gibt das folgende Skript aus?",
+        code: "<span style='color:#00BFFF;'>var</span> a <span style='color:#FF3399;'>=</span> <span style='color:#CB6F39;'>'Dragon'</span>;<br><span style='color:#00BFFF;'>var</span> b <span style='color:#FF3399;'>=</span> a;<br>b <span style='color:#FF3399;'>=</span> <span style='color:#CB6F39;'>'Ball'</span>;<br><br><span style='color:#FFC90E;'>alert</span><span style='color:#FFD700;'>(</span>a <span style='color:#FF3399;'>+</span> <span style='color:#CB6F39;'>' '</span> <span style='color:#FF3399;'>+</span> b<span style='color:#FFD700;'>)</span>;",
         correct_answer: [3],
         score: 4,
         possible_answers: {
             1: "Error",
-            2: "Lernfeld10a Lernfeld10a",
-            3: "Lernfeld10a Klausur",
-            4: "Klausur Klausur"
+            2: "Dragon Dragon",
+            3: "Dragon Ball",
+            4: "Ball Ball"
         }
     },
     {
         id: 32,
         title: "JavaScript Variablendeklaration",
+        question_type: "text",
         question: "Welche der folgenden Variablendeklarationen <br>sind in JavaScript gültig?",
         correct_answer: [2,3,5],
         score: 4,
         possible_answers: {
             1: "eine-neue-variable",
             2: "EINEneueVariable",
-            3: "IT_Hugo",
-            4: "123ITHugo",
-            5: "ithugo"
+            3: "EINE_Variable",
+            4: "123XYz",
+            5: "xcoordinate"
         }
     },
     {
@@ -477,9 +465,12 @@ var questions = [
     {
         id: 34,
         title: "JavaScript Kopfschleife",
+        question_type: "code",
         question: "Wie viele Sterne werden durch das folgende Skript in der Konsole ausgegeben?",
+        code: "<span style='color:#00BFFF;'>let</span> i <span style='color:#FF3399;'>=</span> <span style='color:#995BFF;'>0</span>;<br><span style='color:#FF3399;'>while</span> <span style='color:#FFD700;'>(</span>i <span style='color:#FF3399;'><</span> i <span style='color:#FF3399;'>+</span> <span style='color:#995BFF;'>2</span><span style='color:#FFD700;'>){</span><br>    console.<span style='color:#FFC90E;'>log</span><span style='color:#CE70D6;'>(</span><span style='color:#CB6F39;'>'*'</span><span style='color:#CE70D6;'>)</span>;<br><br>    i<span style='color:#FF3399;'>++</span>;<br><span style='color:#FFD700;'>}</span>",
         correct_answer: [4],
         score: 6,
+        answer_type: "single",
         possible_answers: {
             1: "zwei",
             2: "einer",
@@ -490,9 +481,12 @@ var questions = [
     {
         id: 35,
         title: "JavaScript Geltungsbereich",
+        question_type: "code",
         question: "Welcher Wert wird im folgenden Skript für a in der alert() Funktion ausgegeben?",
+        code: "<span style='color:#00BFFF;'>function</span> changeValue<span style='color:#FFD700;'>(</span><span style='color:#FFD700;'>x</span><span style='color:#FFD700;'>)</span> <span style='color:#FFD700;'>{</span><br>        <span style='color:#FFD700;'>x</span> <span style='color:#FF3399;'>+=</span> <span style='color:#995BFF;'>3</span>;<br><span style='color:#FFD700;'>}</span><br><br><span style='color:#00BFFF;'>var</span> <span style='color:#FFD700;'>a</span> <span style='color:#FF3399;'>=</span> <span style='color:#995BFF;'>8</span>;<br><span style='color:#FFC90E;'>changeValue</span><span style='color:#FFD700;'>(</span>a<span style='color:#FFD700;'>)</span>;<br><br><span style='color:#FFC90E;'>alert</span><span style='color:#FFD700;'>(</span>a<span style='color:#FFD700;'>)</span>;",
         correct_answer: [2],
         score: 4,
+        answer_type: "single",
         possible_answers: {
             1: "11",
             2: "8",
@@ -503,9 +497,12 @@ var questions = [
     {
         id: 36,
         title: "JavaScript Mehrfachzuweisungen",
+        question_type: "code",
         question: "Welchen Wert gibt das folgende Skript für x aus?",
+        code: "<span style='color:#00BFFF;'>var</span> x <span style='color:#FF3399;'>=</span> <span style='color:#995BFF;'>10</span>;<br><span style='color:#00BFFF;'>var</span> y <span style='color:#FF3399;'>=</span> <span style='color:#995BFF;'>11</span>;<br><span style='color:#00BFFF;'>var</span> z <span style='color:#FF3399;'>=</span> <span style='color:#995BFF;'>12</span>;<br>x <span style='color:#FF3399;'>=</span> y <span style='color:#FF3399;'>=</span> z <span style='color:#FF3399;'>=</span> <span style='color:#995BFF;'>25</span>;<br><br><span style='color:#FFC90E;'>alert</span><span style='color:#FFD700;'>(</span>x<span style='color:#FFD700;'>)</span>;",
         correct_answer: [3],
         score: 6,
+        answer_type: "single",
         possible_answers: {
             1: "11",
             2: "12",
