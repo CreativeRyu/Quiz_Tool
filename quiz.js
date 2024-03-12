@@ -2,13 +2,25 @@ var turns = 0;
 var correctAnswers;
 var button_lock = true;
 var score = 0;
-let questionsLen = questions.length
-var idCount
+var questions = [];
+let questionCount;
+var idCount;
 var selectionContainer = document.querySelector(".selection-container");
 let correctAnswerFlags = [];
 var isCodePresented = false;
 
 // TODO: Importer für JSON schreiben
+function loadJSON(filename) {
+    fetch(filename)
+    .then(current_data => current_data.json())
+    .then(question_data => {
+
+        console.log('Geladene Daten:', question_data);
+        questions = question_data;
+        questionCount = questions.length;
+    })
+    .catch(error => console.error('Fehler beim Laden der JSON-Datei:', error));
+}
 // TODO: Option zum Auswählen unterschiedlicher JSONS 
 // TODO: Zurück zum Hauptmenü
 // TODO: mit Steuerkreuz zwischen den JSON Dateien auf dem Bildschirm wählen
@@ -22,7 +34,7 @@ function start_new_turn() {
     button_lock = false;
     current_question = questions.shift();
 
-    document.getElementById("questions-left").innerHTML = `von ${questionsLen}`;
+    document.getElementById("questions-left").innerHTML = `von ${questionCount}`;
     prepareQuestion(current_question);
     createAnswerPanels(possibleAnswers, answerType);
 

@@ -3,7 +3,7 @@
         "id": 1,
         "title": "The Creator",
         "question_type": "text",
-        "question": "Wer hat Dragonball erschaffen",
+        "question": "Wer hat Dragonball erschaffen?",
         "correct_answer": [2],
         "score": 2,
         "answer_type": "single",
