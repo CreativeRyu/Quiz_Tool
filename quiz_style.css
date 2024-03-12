@@ -303,7 +303,6 @@ p {
     grid-template-rows: 1fr 1fr 1fr;
     width: 150px; /* Breite des dPad anpassen */
     height: 150px; /* Höhe des dPad anpassen */
-    cursor: pointer;
     right: 40px;
     z-index: 999;
 }
@@ -315,6 +314,7 @@ p {
     font-size: 24px;
     background-color: #444444;
     color: #626262;
+    cursor: pointer;
     border-style: none;
     z-index: 999;
 }
@@ -326,10 +326,23 @@ p {
     border-radius: 7px 7px 0px 0px;
 }
 
+.d-pad #up:hover, .d-pad #left:hover, .d-pad #right:hover, .d-pad #down:hover {
+    background-color: #525252;
+}
+
+.d-pad #up:active {
+    box-shadow: inset 0px 8px 2px 2px rgb(39, 39, 39);
+}
+
 .d-pad #left {
     grid-row: 2;
     grid-column: 1;
     border-radius: 7px 0px 0px 7px;
+    box-shadow: inset 1px -6px 1px 0px rgb(39, 39, 39);
+}
+
+.d-pad #left:active {
+    box-shadow: inset 0px 3px 1px 0px rgb(39, 39, 39);
 }
 
 .d-pad #center {
@@ -337,6 +350,7 @@ p {
     grid-column: 2;
     background-color: #444444;
 }
+
 .d-pad #center-top {
     grid-row: 2;
     grid-column: 2;
@@ -349,10 +363,20 @@ p {
     grid-row: 2;
     grid-column: 3;
     border-radius: 0px 7px 7px 0px;
+    box-shadow: inset -1px -6px 1px 0px rgb(39, 39, 39);
+}
+
+.d-pad #right:active {
+    box-shadow: inset 0px 3px 1px 0px rgb(39, 39, 39);
 }
 
 .d-pad #down {
     grid-row: 3;
     grid-column: 2;
     border-radius: 0px 0px 7px 7px;
+    box-shadow: inset 0px -6px 2px 2px rgb(39, 39, 39);
+}
+
+.d-pad #down:active {
+    box-shadow: none;
 }
