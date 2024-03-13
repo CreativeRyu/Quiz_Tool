@@ -58,6 +58,8 @@ function enter_main_menu() {
     document.getElementById("Title").innerHTML = "Choose your Exam";
     document.getElementById("Question").classList.remove("blink");
     document.getElementById("Question").innerHTML = "";
+    document.body.classList.add("main-menu");
+    createMediaElements();
 
     if (document.getElementById("icon")) {
         iconElement = document.getElementById("icon");
@@ -70,7 +72,8 @@ function start_new_turn() {
     if (isCodePresented) { return; }
     menu = menuEnum[3];
 
-    document.querySelector('.text-panel').classList.add('panel-animation');
+    document.body.classList.remove("main-menu");
+    document.querySelector('.text-panel').classList.add('fadeIn');
     selectionContainer.innerHTML = "";
     button_lock = false;
     current_question = questions.shift();
@@ -166,8 +169,7 @@ function toggleCodeSnippet() {
         codePanel.id = "code-panel";
         document.querySelector('.text-panel').appendChild(codePanel);
         codePanel.classList.remove("fadeIn");
-        codePanel.a
-
+        codePanel.classList.add("fadeOut");
 
         // Holt den Code aus dem aktuellen Fragenobjekt
         var code = current_question.code;
@@ -184,45 +186,37 @@ function toggleCodeSnippet() {
     }
 }
 
-// // Event-Listener für die Steuerkreuz-Buttons hinzufügen
-// upButton.addEventListener("click", function() {
-//     navigateJSONFiles("up");
-// });
-
-// downButton.addEventListener("click", function() {
-//     navigateJSONFiles("down");
-// });
-
-// leftButton.addEventListener("click", function() {
-//     navigateJSONFiles("left");
-// });
-
-// rightButton.addEventListener("click", function() {
-//     navigateJSONFiles("right");
-// });
-
-// Funktion zum Anzeigen der JSON-Dateien im Hauptmenü
-function displayJSONFiles() {
-    var jsonList = document.getElementById("json-list");
-    jsonList.innerHTML = "";
-    var availableJSONFiles = ["Web Development", "Test"];
-
-    availableJSONFiles.forEach(function (fileName) {
-        var listItem = document.createElement("li");
-        listItem.textContent = fileName;
-        jsonList.appendChild(listItem);
-    });
+function loadAvailableJSONFiles() {
+    return ["Web_Developement.json", "Test.json","PCEP", "PCAP", "PCAP2"]; 
 }
 
-// Funktion zum Anzeigen der JSON-Dateien im Textpanel, wenn das Menü auf "main" gesetzt ist
-function toggleJSONFilesDisplay() {
-    var textPanel = document.querySelector('.text-panel');
-    if (menu === "main") {
-        // Menü ist auf "main" gesetzt, also zeigen Sie die JSON-Dateien an
-        textPanel.style.display = "block";
-        displayJSONFiles();
-    } else {
-        // Menü ist nicht auf "main" gesetzt, also verstecken Sie die JSON-Dateien
-        textPanel.style.display = "none";
-    }
+function createMediaElements() {
+    var availableJSONFiles = loadAvailableJSONFiles();
+
+    var mediaScroller = document.querySelector('.media-scroller');
+    mediaScroller.innerHTML = '';
+
+    availableJSONFiles.forEach(function(fileName, index) {
+        var mediaElement = document.createElement('div');
+        mediaElement.classList.add('media-element');
+        
+        var imageBox = document.createElement('div');
+        imageBox.classList.add('image-box');
+        mediaElement.appendChild(imageBox);
+
+        var img = document.createElement('img');
+        img.classList.add('box-img');
+        img.src = './test.png';
+        imageBox.appendChild(img);
+
+        var p = document.createElement('p');
+        p.textContent = fileName.replace(/\.[^/.]+$/, '').replace(/_/g, ' ');
+        mediaElement.appendChild(p);
+
+        mediaElement.addEventListener('click', function() {
+            loadJSON(fileName);
+        });
+
+        mediaScroller.appendChild(mediaElement);
+    });
 }

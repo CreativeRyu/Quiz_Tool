@@ -11,8 +11,6 @@
 </head>
 
 <body>
-    <button onclick="loadJSON('./test_webdev.json')">Web Developement</button>
-    <button onclick="loadJSON('./test.json')">Test JSON</button>
     <div class="panel-container">
         <!-- Das Steuerkreuz -->
 
@@ -31,6 +29,32 @@
                         <img src="./Creative Djinn Logo Dark.png" alt="Creative Djinns Icon" height="100px">
                     </div>
                     <p id="Question" class="blink">Press Start</p>
+                    <div class="media-scroller">
+                        <div class="media-element">
+                            <div class="image-box">
+                                <img class="box-img" src="./test.png" alt="" height="80px">
+                            </div>
+                            <p>Demo Text</p>
+                        </div>
+                        <div class="media-element">
+                            <div class="image-box">
+                                <img class="box-img" src="./test.png" alt="">
+                            </div>
+                            <p>Demo Text</p>
+                        </div>
+                        <div class="media-element">
+                            <div class="image-box">
+                                <img class="box-img" src="./test.png" alt="">
+                            </div>
+                            <p>Demo Text</p>
+                        </div>
+                        <div class="media-element">
+                            <div class="image-box">
+                                <img class="box-img" src="./test.png" alt="">
+                            </div>
+                            <p>Demo Text</p>
+                        </div>
+                    </div>
                 </div>
                 <button class="toggle-code-button" onclick="toggleCodeSnippet()"></button>
             </div>
@@ -54,7 +78,10 @@
             </div>
             <div class="ui-element">
                 <div class="button-embedded"></div>
-                <button class="next-question-button" onclick="control_menu();"></button>
+                <button class="next-question-button" onclick="control_menu();">
+                    <span class="button-shadow"></span>
+                    <span class="button-edge"></span>
+                </button>
             </div>
         </div>
     </div>

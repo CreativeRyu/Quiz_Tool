@@ -13,11 +13,6 @@ code {
     color: #26503e;
 }
 
-.javascript {
-    border-radius: 5px;
-    /* Abrundung der Ecken */
-}
-
 .panel-container {
     display: flex;
     flex-direction: column;
@@ -59,7 +54,7 @@ code {
     box-shadow: inset 5px 8px 20px 5px rgb(81, 97, 72);
 }
 
-.panel-animation {
+.fadeIn {
     animation: fadeIn 1s forwards;
 }
 
@@ -83,8 +78,26 @@ code {
 }
 
 .fadeOut {
-    transition: opacity 1s ease;
-    opacity: 0;
+    animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        transform: scale(1, 1);
+        opacity: 1;
+    }
+
+    10%, 30% {
+        transform: scale(1, 0.01);
+        opacity: 0.8;
+        box-shadow: none;
+    }
+
+    60% {
+        transform: scale(0, 0);
+        opacity: 0.3;
+        box-shadow: none;
+    }
 }
 
 .lamp {
@@ -96,15 +109,85 @@ code {
     left: -4%;
     margin: 0;
     border-radius: 50%;
-    box-shadow: 0 0 4px black;
+    box-shadow: 0 0 4px rgba(255, 183, 183, 0.814);
     z-index: 4;
 }
 
 #Title {
     font-weight: bold;
-    color: #071821;
+    color: #0f380f;
     font-size: 30px;
     font-family: 'Kemco Pixel', sans-serif;
+}
+
+.media-scroller {
+    display: none;;
+    gap: 1rem;
+    grid-auto-flow: column;
+    padding: 1rem 1rem 1rem 1rem;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    margin: 0 5em 0;
+}
+
+.main-menu .media-scroller {
+    display:grid
+}
+
+.media-scroller::-webkit-scrollbar {
+    width: 0;
+}
+
+.media-element {
+    display: grid;
+    width: 112px;
+    height: 150px;
+    grid-template-rows: min-content;
+    gap: 1rem;
+    padding: 0.2rem;;
+    border-radius: 10px;
+    background-color: #cadc9f;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.image-box {
+    margin: 0 auto;
+    padding: 0;
+    padding-top: 5px;
+}
+
+.box-img {
+    height: 80px;
+}
+
+.media-element p{ 
+    color: #0f380f;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+
+.media-element>img {
+    inline-size: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.snaps-inline {
+    scroll-snap-type: inline mandatory;
+    scroll-padding-inline: 1rem 1rem;
+}
+
+.snaps-inline>* {
+    scroll-snap-align: start;
+}
+
+.media-element:hover {
+    background-color: #8bac0f;
+    transform: scale(1.035, 1.035);
+    box-shadow: 0 5px 6px rgba(0, 0, 0, 0.5);
 }
 
 .selection-container {
@@ -211,26 +294,78 @@ p {
 .next-question-button {
     width: 80px;
     height: 80px;
-    border: 3px #d3d3d3;
-    border-style: groove;
+    padding: 0;
+    border: none;
     border-radius: 50%;
-    background: #c32275;
+    background: transparent;
     cursor: pointer;
     position: absolute;
     left: 40px;
     top: 40px;
     z-index: 999;
-    /* Stelle sicher, dass der Button über anderen Inhalten liegt */
+    outline-offset: 4px;
+    transition: filter 250ms;
+}
+
+.button-shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: hsl(0deg 0% 0% / 0.25);
+    will-change: transform;
+    transform: translateY(2px);
+    transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+
+.button-edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(to bottom,
+            #c32275 0%,
+            #c32275 20%,
+            #c32275 80%,
+            #850848 100%);
+    box-shadow: inset 0px 0px 3px 3px rgba(209, 111, 144, 0.648);
 }
 
 .next-question-button:hover {
     background: #f1439d;
     border-color: #cc267c;
     box-shadow: 0px 0px 5px 5px rgb(255, 179, 246);
+    filter: brightness(110%);
+    -webkit-filter: brightness(110%);
 }
 
-.next-question-button:active {
-    box-shadow: inset 0px 0px 3px 3px rgb(150, 0, 50);
+.next-question-button:hover .button-shadow {
+    transform: translateY(4px);
+    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+
+.next-question-button:active .button-shadow {
+    transform: translateY(1px);
+    transition: transform 34ms;
+}
+
+.next-question-button:hover .button-edge {
+    transform: translateY(-2px);
+    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+
+.next-question-button:active .button-edge {
+    transform: translateY(1px);
+    transition: transform 34ms;
+    box-shadow: inset 0px 0px 3px 3px rgb(159, 28, 71);
+}
+
+.next-question-button:focus:not(:focus-visible) {
+    outline: none;
 }
 
 .button-embedded {
@@ -301,16 +436,20 @@ p {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    width: 150px; /* Breite des dPad anpassen */
-    height: 150px; /* Höhe des dPad anpassen */
+    width: 150px;
+    /* Breite des dPad anpassen */
+    height: 150px;
+    /* Höhe des dPad anpassen */
     right: 40px;
     z-index: 999;
 }
 
 .d-pad button {
     position: absolute;
-    width: 50px; /* Breite der Buttons anpassen */
-    height: 50px; /* Höhe der Buttons anpassen */
+    width: 50px;
+    /* Breite der Buttons anpassen */
+    height: 50px;
+    /* Höhe der Buttons anpassen */
     font-size: 24px;
     background-color: #444444;
     color: #626262;
@@ -356,7 +495,7 @@ p {
     grid-column: 2;
     background-color: #353535;
     border-radius: 50%;
-    z-index:999;
+    z-index: 999;
 }
 
 .d-pad #right {
