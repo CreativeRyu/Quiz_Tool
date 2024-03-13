@@ -21,6 +21,7 @@ let menu = menuEnum[1];
 
 // JSON Importer
 function loadJSON(filename) {
+    if (menu !== "main") { return; }
     fetch(filename)
         .then(current_data => current_data.json())
         .then(question_data => {
@@ -40,6 +41,9 @@ function control_menu() {
             toggleJSONFilesDisplay();
             break;
         case "main":
+            start_new_turn();
+            break;
+        case "exam":
             start_new_turn();
             break;
 
@@ -64,6 +68,7 @@ function enter_main_menu() {
 
 function start_new_turn() {
     if (isCodePresented) { return; }
+    menu = menuEnum[3];
 
     document.querySelector('.text-panel').classList.add('panel-animation');
     selectionContainer.innerHTML = "";
@@ -202,7 +207,7 @@ function displayJSONFiles() {
     jsonList.innerHTML = "";
     var availableJSONFiles = ["Web Development", "Test"];
 
-    availableJSONFiles.forEach(function(fileName) {
+    availableJSONFiles.forEach(function (fileName) {
         var listItem = document.createElement("li");
         listItem.textContent = fileName;
         jsonList.appendChild(listItem);
