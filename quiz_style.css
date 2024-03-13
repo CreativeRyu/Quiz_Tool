@@ -160,6 +160,7 @@ code {
 
 .box-img {
     height: 80px;
+    filter: sepia(0.5)
 }
 
 .media-element p{ 
@@ -188,6 +189,18 @@ code {
     background-color: #8bac0f;
     transform: scale(1.035, 1.035);
     box-shadow: 0 5px 6px rgba(0, 0, 0, 0.5);
+}
+
+.media-element-focus {
+    background-color: #8bac0f;
+    transform: scale(1.035, 1.035);
+    box-shadow: 0 5px 6px rgba(0, 0, 0, 0.5);
+}
+
+.media-element:active {
+    background-color: #8bac0f;
+    transform: scale(1.035, 1.035);
+    box-shadow: inset 0 5px 6px rgba(0, 0, 0, 0.5);
 }
 
 .selection-container {

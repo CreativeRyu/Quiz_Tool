@@ -8,10 +8,8 @@ var idCount;
 var selectionContainer = document.querySelector(".selection-container");
 let correctAnswerFlags = [];
 var isCodePresented = false;
-var upButton = document.getElementById("up");
-var downButton = document.getElementById("down");
-var leftButton = document.getElementById("left");
-var rightButton = document.getElementById("right");
+var currentMediaElementIndex = 0;
+var mediaElements;
 const menuEnum = {
     1: "title",
     2: "main",
@@ -22,6 +20,7 @@ let menu = menuEnum[1];
 // JSON Importer
 function loadJSON(filename) {
     if (menu !== "main") { return; }
+    document.getElementById("Title").innerHTML = "Loading Data...";
     fetch(filename)
         .then(current_data => current_data.json())
         .then(question_data => {
@@ -31,14 +30,10 @@ function loadJSON(filename) {
         .catch(error => console.error('Fehler beim Laden der JSON-Datei:', error));
 }
 
-// TODO: Zurück zum Hauptmenü
-// TODO: mit Steuerkreuz zwischen den JSON Dateien auf dem Bildschirm wählen
-
 function control_menu() {
     switch (menu) {
         case "title":
             enter_main_menu();
-            toggleJSONFilesDisplay();
             break;
         case "main":
             start_new_turn();
@@ -54,7 +49,6 @@ function control_menu() {
 
 function enter_main_menu() {
     menu = menuEnum[2];
-    // Hauptmenübereich später auslagern in eigene Funktion
     document.getElementById("Title").innerHTML = "Choose your Exam";
     document.getElementById("Question").classList.remove("blink");
     document.getElementById("Question").innerHTML = "";
@@ -66,6 +60,7 @@ function enter_main_menu() {
         iconElement.parentNode.removeChild(iconElement);
         iconElement.classList.remove("icon");
     }
+    updateFocus(currentMediaElementIndex);
 }
 
 function start_new_turn() {
@@ -187,7 +182,7 @@ function toggleCodeSnippet() {
 }
 
 function loadAvailableJSONFiles() {
-    return ["Web_Developement.json", "Test.json","PCEP", "PCAP", "PCAP2"]; 
+    return ["Web_Dev.json", "Test.json", "PCEP", "PCAP", "PCAP2"];
 }
 
 function createMediaElements() {
@@ -196,10 +191,10 @@ function createMediaElements() {
     var mediaScroller = document.querySelector('.media-scroller');
     mediaScroller.innerHTML = '';
 
-    availableJSONFiles.forEach(function(fileName, index) {
+    availableJSONFiles.forEach(function (fileName, index) {
         var mediaElement = document.createElement('div');
         mediaElement.classList.add('media-element');
-        
+
         var imageBox = document.createElement('div');
         imageBox.classList.add('image-box');
         mediaElement.appendChild(imageBox);
@@ -213,10 +208,39 @@ function createMediaElements() {
         p.textContent = fileName.replace(/\.[^/.]+$/, '').replace(/_/g, ' ');
         mediaElement.appendChild(p);
 
-        mediaElement.addEventListener('click', function() {
+        mediaElement.addEventListener('click', function () {
             loadJSON(fileName);
         });
 
         mediaScroller.appendChild(mediaElement);
+    });
+    mediaElements = document.querySelectorAll('.media-element');
+}
+
+// Steuerung mit den Pfeiltasten
+function handleNavigation(event) {
+    switch (event.id) {
+        case 'left':
+            if (currentMediaElementIndex > 0) {
+                currentMediaElementIndex--;
+                updateFocus(currentMediaElementIndex);
+            }
+            break;
+        case 'right':
+            if (currentMediaElementIndex < mediaElements.length - 1) {
+                currentMediaElementIndex++;
+                updateFocus(currentMediaElementIndex);
+            }
+            break;
+    }
+}
+
+function updateFocus(currentMediaElementIndex) {
+    mediaElements.forEach((element, index) => {
+        if (index === currentMediaElementIndex) {
+            element.focus();
+        } else {
+            element.blur();
+        }
     });
 }
