@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <button onclick="loadJSON('./test_webdev.json')">Test Webdev JSON</button>
+    <button onclick="loadJSON('./test_webdev.json')">Web Developement</button>
     <button onclick="loadJSON('./test.json')">Test JSON</button>
     <div class="panel-container">
         <!-- Das Steuerkreuz -->
@@ -26,7 +26,10 @@
                         <p id="questions-left" class="hud-item"></p>
                         <p id="Score" class="hud-item"></p>
                     </div>
-                    <h1 id="Title">Test Vorbereitung</h1>
+                    <h1 id="Title">Creative Djinns Education</h1>
+                    <div id="icon">
+                        <img src="./Creative Djinn Logo Dark.png" alt="Creative Djinns Icon" height="100px">
+                    </div>
                     <p id="Question" class="blink">Press Start</p>
                 </div>
                 <button class="toggle-code-button" onclick="toggleCodeSnippet()"></button>
@@ -51,7 +54,7 @@
             </div>
             <div class="ui-element">
                 <div class="button-embedded"></div>
-                <button class="next-question-button" onclick="start_new_turn();"></button>
+                <button class="next-question-button" onclick="control_menu();"></button>
             </div>
         </div>
     </div>

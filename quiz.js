@@ -8,33 +8,69 @@ var idCount;
 var selectionContainer = document.querySelector(".selection-container");
 let correctAnswerFlags = [];
 var isCodePresented = false;
+var upButton = document.getElementById("up");
+var downButton = document.getElementById("down");
+var leftButton = document.getElementById("left");
+var rightButton = document.getElementById("right");
+const menuEnum = {
+    1: "title",
+    2: "main",
+    3: "exam"
+};
+let menu = menuEnum[1];
 
-// TODO: Importer für JSON schreiben
+// JSON Importer
 function loadJSON(filename) {
     fetch(filename)
-    .then(current_data => current_data.json())
-    .then(question_data => {
-
-        console.log('Geladene Daten:', question_data);
-        questions = question_data;
-        questionCount = questions.length;
-    })
-    .catch(error => console.error('Fehler beim Laden der JSON-Datei:', error));
+        .then(current_data => current_data.json())
+        .then(question_data => {
+            questions = question_data;
+            questionCount = questions.length;
+        })
+        .catch(error => console.error('Fehler beim Laden der JSON-Datei:', error));
 }
-// TODO: Option zum Auswählen unterschiedlicher JSONS 
+
 // TODO: Zurück zum Hauptmenü
 // TODO: mit Steuerkreuz zwischen den JSON Dateien auf dem Bildschirm wählen
 
+function control_menu() {
+    switch (menu) {
+        case "title":
+            enter_main_menu();
+            toggleJSONFilesDisplay();
+            break;
+        case "main":
+            start_new_turn();
+            break;
+
+        default:
+            break;
+    }
+}
+
+function enter_main_menu() {
+    menu = menuEnum[2];
+    // Hauptmenübereich später auslagern in eigene Funktion
+    document.getElementById("Title").innerHTML = "Choose your Exam";
+    document.getElementById("Question").classList.remove("blink");
+    document.getElementById("Question").innerHTML = "";
+
+    if (document.getElementById("icon")) {
+        iconElement = document.getElementById("icon");
+        iconElement.parentNode.removeChild(iconElement);
+        iconElement.classList.remove("icon");
+    }
+}
+
 function start_new_turn() {
-    if (isCodePresented) {return;}
+    if (isCodePresented) { return; }
 
     document.querySelector('.text-panel').classList.add('panel-animation');
-    document.getElementById("Question").classList.remove("blink");
     selectionContainer.innerHTML = "";
     button_lock = false;
     current_question = questions.shift();
+    document.getElementById("questions-left").innerHTML = (questionCount) ? `von ${questionCount}` : " ";
 
-    document.getElementById("questions-left").innerHTML = `von ${questionCount}`;
     prepareQuestion(current_question);
     createAnswerPanels(possibleAnswers, answerType);
 
@@ -49,7 +85,7 @@ function start_new_turn() {
 
 function tap_button(current_button) {
     if (button_lock) { return; }
-    if(isCodePresented) {
+    if (isCodePresented) {
         toggleCodeSnippet();
     }
 
@@ -140,5 +176,48 @@ function toggleCodeSnippet() {
     } else {
         codePanel.parentNode.removeChild(codePanel);
         isCodePresented = false;
+    }
+}
+
+// // Event-Listener für die Steuerkreuz-Buttons hinzufügen
+// upButton.addEventListener("click", function() {
+//     navigateJSONFiles("up");
+// });
+
+// downButton.addEventListener("click", function() {
+//     navigateJSONFiles("down");
+// });
+
+// leftButton.addEventListener("click", function() {
+//     navigateJSONFiles("left");
+// });
+
+// rightButton.addEventListener("click", function() {
+//     navigateJSONFiles("right");
+// });
+
+// Funktion zum Anzeigen der JSON-Dateien im Hauptmenü
+function displayJSONFiles() {
+    var jsonList = document.getElementById("json-list");
+    jsonList.innerHTML = "";
+    var availableJSONFiles = ["Web Development", "Test"];
+
+    availableJSONFiles.forEach(function(fileName) {
+        var listItem = document.createElement("li");
+        listItem.textContent = fileName;
+        jsonList.appendChild(listItem);
+    });
+}
+
+// Funktion zum Anzeigen der JSON-Dateien im Textpanel, wenn das Menü auf "main" gesetzt ist
+function toggleJSONFilesDisplay() {
+    var textPanel = document.querySelector('.text-panel');
+    if (menu === "main") {
+        // Menü ist auf "main" gesetzt, also zeigen Sie die JSON-Dateien an
+        textPanel.style.display = "block";
+        displayJSONFiles();
+    } else {
+        // Menü ist nicht auf "main" gesetzt, also verstecken Sie die JSON-Dateien
+        textPanel.style.display = "none";
     }
 }

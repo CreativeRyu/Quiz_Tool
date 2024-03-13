@@ -380,3 +380,7 @@ p {
 .d-pad #down:active {
     box-shadow: none;
 }
+
+#icon {
+    filter: sepia(0.6);
+}
