@@ -30,30 +30,6 @@
                     </div>
                     <p id="Question" class="blink">Press Start</p>
                     <div class="media-scroller">
-                        <div class="media-element">
-                            <div class="image-box">
-                                <img class="box-img" src="./test.png" alt="" height="80px">
-                            </div>
-                            <p>Demo Text</p>
-                        </div>
-                        <div class="media-element">
-                            <div class="image-box">
-                                <img class="box-img" src="./test.png" alt="">
-                            </div>
-                            <p>Demo Text</p>
-                        </div>
-                        <div class="media-element">
-                            <div class="image-box">
-                                <img class="box-img" src="./test.png" alt="">
-                            </div>
-                            <p>Demo Text</p>
-                        </div>
-                        <div class="media-element">
-                            <div class="image-box">
-                                <img class="box-img" src="./test.png" alt="">
-                            </div>
-                            <p>Demo Text</p>
-                        </div>
                     </div>
                 </div>
                 <button class="toggle-code-button" onclick="toggleCodeSnippet()"></button>
@@ -65,10 +41,10 @@
             <div class="ui-element">
                 <div class="d-pad">
                     <button id="up">↑</button>
-                    <button id="left">←</button>
+                    <button id="left" onclick="handleNavigation(this)">←</button>
                     <div id="center"></div>
                     <div id="center-top"></div>
-                    <button id="right">→</button>
+                    <button id="right" onclick="handleNavigation(this)">→</button>
                     <button id="down">↓</button>
                 </div>
             </div>
