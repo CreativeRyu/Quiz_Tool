@@ -121,7 +121,8 @@ code {
 }
 
 .media-scroller {
-    display: none;;
+    display: none;
+    ;
     gap: 1rem;
     grid-auto-flow: column;
     padding: 1rem 1rem 1rem 1rem;
@@ -131,7 +132,7 @@ code {
 }
 
 .main-menu .media-scroller {
-    display:grid
+    display: grid
 }
 
 .media-scroller::-webkit-scrollbar {
@@ -144,12 +145,27 @@ code {
     height: 150px;
     grid-template-rows: min-content;
     gap: 1rem;
-    padding: 0.2rem;;
+    padding: 0.2rem;
+    ;
     border-radius: 10px;
     background-color: #cadc9f;
     cursor: pointer;
     text-align: center;
     transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.rotate-animation {
+    animation: rotate 1s forwards;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(360deg);
+    }
 }
 
 .image-box {
@@ -163,7 +179,7 @@ code {
     filter: sepia(0.5)
 }
 
-.media-element p{ 
+.media-element p {
     color: #0f380f;
     margin: 0;
     padding: 0;
@@ -191,7 +207,7 @@ code {
     box-shadow: 0 5px 6px rgba(0, 0, 0, 0.5);
 }
 
-.media-element-focus {
+.media-element-chosen {
     background-color: #8bac0f;
     transform: scale(1.035, 1.035);
     box-shadow: 0 5px 6px rgba(0, 0, 0, 0.5);

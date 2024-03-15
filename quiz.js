@@ -6,6 +6,7 @@ var questions = [];
 let questionCount;
 var idCount;
 var selectionContainer = document.querySelector(".selection-container");
+var nextButton = document.querySelector('.next-question-button');
 let correctAnswerFlags = [];
 var isCodePresented = false;
 var currentMediaElementIndex = 0;
@@ -13,19 +14,23 @@ var mediaElements;
 const menuEnum = {
     1: "title",
     2: "main",
-    3: "exam"
+    3: "loading",
+    4: "exam"
 };
 let menu = menuEnum[1];
 
 // JSON Importer
 function loadJSON(filename) {
     if (menu !== "main") { return; }
+    menu = menuEnum[3];
     document.getElementById("Title").innerHTML = "Loading Data...";
     fetch(filename)
         .then(current_data => current_data.json())
         .then(question_data => {
             questions = question_data;
             questionCount = questions.length;
+            mediaElements[currentMediaElementIndex].classList.add('rotate-animation');
+            setTimeout(start_new_turn, 1000);
         })
         .catch(error => console.error('Fehler beim Laden der JSON-Datei:', error));
 }
@@ -34,8 +39,12 @@ function control_menu() {
     switch (menu) {
         case "title":
             enter_main_menu();
+            toggleEventListener(true, currentMediaElementIndex);
             break;
         case "main":
+            // erstmal noch nichts
+            break;
+        case "loading":
             start_new_turn();
             break;
         case "exam":
@@ -65,7 +74,7 @@ function enter_main_menu() {
 
 function start_new_turn() {
     if (isCodePresented) { return; }
-    menu = menuEnum[3];
+    menu = menuEnum[4];
 
     document.body.classList.remove("main-menu");
     document.querySelector('.text-panel').classList.add('fadeIn');
@@ -131,23 +140,22 @@ function createAnswerPanels(possibleAnswers, answerType) {
             var answer = possibleAnswers[key];
             var pElement = document.createElement("p");
             pElement.textContent = answer;
-            pElement.id = idCount; // Erstelle eine eindeutige ID für jedes <p>-Element
+            pElement.id = idCount;
             if (answerType == "code") {
                 pElement.innerHTML = answer;
                 selectionContainer.style.display = "grid";
-                // Setze das Grid-Layout entsprechend deiner Anforderungen
-                selectionContainer.style.gridTemplateColumns = "1fr 1fr"; // Zwei Spalten
-                selectionContainer.style.gridTemplateRows = "1fr 1fr"; // Zwei Zeilen
+                selectionContainer.style.gridTemplateColumns = "1fr 1fr";
+                selectionContainer.style.gridTemplateRows = "1fr 1fr";
 
                 pElement.classList.add("selection-code");
             }
             else {
                 selectionContainer.style.display = "flex";
-                pElement.classList.add("selection"); // Füge der answerklasse "auswahl" hinzu
+                pElement.classList.add("selection");
             }
-            pElement.onclick = function () { tap_button(this); }; // Füge dem Element einen Klick-Handler hinzu
+            pElement.onclick = function () { tap_button(this); };
             selectionContainer.appendChild(pElement);
-            idCount++; // Inkrementiere den ID-Zähler
+            idCount++;
         }
     }
 }
@@ -172,7 +180,7 @@ function toggleCodeSnippet() {
         // Erstelle das Code-Element und füge es zum Code-Panel hinzu
         var codeElement = document.createElement("pre");
         codeElement.innerHTML = code;
-        codeElement.classList.add("code-snippet"); // Fügen Sie eine Klasse für die Formatierung hinzu
+        codeElement.classList.add("code-snippet");
         codePanel.appendChild(codeElement);
         isCodePresented = true;
     } else {
@@ -207,6 +215,8 @@ function createMediaElements() {
         var p = document.createElement('p');
         p.textContent = fileName.replace(/\.[^/.]+$/, '').replace(/_/g, ' ');
         mediaElement.appendChild(p);
+        // Speicherung des FileNames in der entsprechenden Variable
+        mediaElement.dataset.fileName = fileName;
 
         mediaElement.addEventListener('click', function () {
             loadJSON(fileName);
@@ -222,25 +232,43 @@ function handleNavigation(event) {
     switch (event.id) {
         case 'left':
             if (currentMediaElementIndex > 0) {
-                currentMediaElementIndex--;
-                updateFocus(currentMediaElementIndex);
+                currentMediaElementIndex = switchMediaElement(event.id, currentMediaElementIndex);
             }
             break;
         case 'right':
             if (currentMediaElementIndex < mediaElements.length - 1) {
-                currentMediaElementIndex++;
-                updateFocus(currentMediaElementIndex);
+                currentMediaElementIndex = switchMediaElement(event.id, currentMediaElementIndex);
             }
             break;
     }
 }
 
+function switchMediaElement(direction, currentIndex) {
+    toggleEventListener(false, currentIndex);
+    direction == "left" ? currentIndex-- : currentIndex++;
+    updateFocus(currentIndex);
+    toggleEventListener(true, currentIndex);
+    return currentIndex
+}
+
 function updateFocus(currentMediaElementIndex) {
     mediaElements.forEach((element, index) => {
         if (index === currentMediaElementIndex) {
-            element.focus();
+            element.classList.add('media-element-chosen');
         } else {
-            element.blur();
+            element.classList.remove('media-element-chosen');
         }
     });
+}
+
+function toggleEventListener(shouldLoading, currentMediaElementIndex) {
+    element = mediaElements[currentMediaElementIndex];
+    if (shouldLoading) {
+        nextButton.addEventListener('click', function () {
+            loadJSON(element.dataset.fileName);
+        });
+    }
+    else {
+        nextButton.removeEventListener('click', loadJSON);
+    }
 }
