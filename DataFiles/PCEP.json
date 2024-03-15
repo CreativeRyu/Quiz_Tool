@@ -1,16 +1,34 @@
 [
     {
         "id": 1,
-        "title": "The Creator",
-        "question_type": "text",
-        "question": "Wer hat Dragonball erschaffen?",
-        "correct_answer": [2],
+        "title": "Frage 1",
+        "question_type": "code",
+        "question": "Was wird in der Konsole geprintet,<br>wenn das folgende Script ausgeführt wird?",
+        "code": "<span style='color:#00BFFF;'>def</span> <span style='color:#00D364;'>func</span><span style='color:#FFD700;'>(</span>py<span style='color:#FFD700;'>)</span>:<br>&nbsp;&nbsp;&nbsp;&nbsp;<span style='color:#FF3399;'>return</span> <span style='color:#FFD700;'>[</span><span style='color:#FFD700;'>'Python'</span>, <span style='color:#FFD700;'>'Java'</span><span style='color:#FFD700;'>]</span><br><br>lst <span style='color:#FF3399;'>=</span> <span style='color:#FFD700;'>[</span><span style='color:#995BFF;'>2</span>, <span style='color:#995BFF;'>3</span>, <span style='color:#995BFF;'>4</span><span style='color:#FFD700;'>]</span><br>ret <span style='color:#FF3399;'>=</span> func<span style='color:#FFD700;'>(</span>lst<span style='color:#FFD700;'>)</span><br><span style='color:#00CEC7;'>print</span><span style='color:#FFD700;'>(</span>ret<span style='color:#FFD700;'>)</span>",
+        "correct_answer": [1],
         "score": 2,
         "answer_type": "single",
         "possible_answers": {
-            "1": "Ich",
-            "2": "Akira Toriyama",
-            "3": "Eiji Aonuma"
+            "1": "['Python','Java']",
+            "2": "[2,3]",
+            "3": "('Python','Java')",
+            "4": "[2,3,4,'Python','Java']"
+        }
+    },
+    {
+        "id": 2,
+        "title": "Frage 2",
+        "question_type": "code",
+        "question": "Wie lautet der Output <br>nach Ausführung dieses CodeSnippets?",
+        "code": "<span style='color:#00BFFF;'>def</span> <span style='color:#00D364;'>func</span><span style='color:#FFD700;'>(</span>py<span style='color:#FFD700;'>)</span>:<br>&nbsp;&nbsp;&nbsp;&nbsp;<span style='color:#FF3399;'>return</span> <span style='color:#FFD700;'>[</span><span style='color:#FFD700;'>'Python'</span>, <span style='color:#FFD700;'>'Java'</span><span style='color:#FFD700;'>]</span><br><br>lst <span style='color:#FF3399;'>=</span> <span style='color:#FFD700;'>[</span><span style='color:#995BFF;'>2</span>, <span style='color:#995BFF;'>3</span>, <span style='color:#995BFF;'>4</span><span style='color:#FFD700;'>]</span><br>ret <span style='color:#FF3399;'>=</span> func<span style='color:#FFD700;'>(</span>lst<span style='color:#FFD700;'>)</span><br><span style='color:#00CEC7;'>print</span><span style='color:#FFD700;'>(</span>ret<span style='color:#FFD700;'>)</span>",
+        "correct_answer": [1],
+        "score": 2,
+        "answer_type": "single",
+        "possible_answers": {
+            "1": "False",
+            "2": "True",
+            "3": "Inside if",
+            "4": "Inside else"
         }
     }
-]    
+]
