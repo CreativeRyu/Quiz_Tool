@@ -122,7 +122,6 @@ code {
 
 .media-scroller {
     display: none;
-    ;
     gap: 1rem;
     grid-auto-flow: column;
     padding: 1rem 1rem 1rem 1rem;
@@ -146,7 +145,6 @@ code {
     grid-template-rows: min-content;
     gap: 1rem;
     padding: 0.2rem;
-    ;
     border-radius: 10px;
     background-color: #cadc9f;
     cursor: pointer;

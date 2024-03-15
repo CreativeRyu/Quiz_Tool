@@ -233,11 +233,13 @@ function handleNavigation(event) {
         case 'left':
             if (currentMediaElementIndex > 0) {
                 currentMediaElementIndex = switchMediaElement(event.id, currentMediaElementIndex);
+                scrollToMediaElement(currentMediaElementIndex);
             }
             break;
         case 'right':
             if (currentMediaElementIndex < mediaElements.length - 1) {
                 currentMediaElementIndex = switchMediaElement(event.id, currentMediaElementIndex);
+                scrollToMediaElement(currentMediaElementIndex);
             }
             break;
     }
@@ -271,4 +273,17 @@ function toggleEventListener(shouldLoading, currentMediaElementIndex) {
     else {
         nextButton.removeEventListener('click', loadJSON);
     }
+}
+
+function scrollToMediaElement(index) {
+    const wrapper = document.querySelector('.media-scroller');
+    const mediaElement = mediaElements[index];
+    const mediaElementRect = mediaElement.getBoundingClientRect();
+    const wrapperRect = wrapper.getBoundingClientRect();
+    const scrollX = mediaElementRect.left - wrapperRect.left - ((wrapper.clientWidth / 2 - mediaElement.clientWidth / 2)) / 2;
+
+    wrapper.scrollTo({
+        left: scrollX,
+        behavior: 'smooth'
+    });
 }
