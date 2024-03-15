@@ -190,16 +190,18 @@ function toggleCodeSnippet() {
 }
 
 function loadAvailableJSONFiles() {
-    return ["Web_Dev.json", "Test.json", "PCEP", "PCAP", "PCAP2"];
+    return ["./DataFiles/Web_Dev.json", "./DataFiles/Test.json", "./DataFiles/PCEP.json", "./DataFiles/PCAP.json"];
 }
 
 function createMediaElements() {
+    const dataFilesPath = "./DataFiles/";
     var availableJSONFiles = loadAvailableJSONFiles();
-
     var mediaScroller = document.querySelector('.media-scroller');
     mediaScroller.innerHTML = '';
 
-    availableJSONFiles.forEach(function (fileName, index) {
+    availableJSONFiles.forEach(function (file, index) {
+        fileName = file.trim().replace(dataFilesPath, '');
+        fileName = fileName.replace(/\.[^/.]+$/, '');
         var mediaElement = document.createElement('div');
         mediaElement.classList.add('media-element');
 
@@ -209,17 +211,17 @@ function createMediaElements() {
 
         var img = document.createElement('img');
         img.classList.add('box-img');
-        img.src = './test.png';
+        img.src = `./assets/${fileName}.png`;
         imageBox.appendChild(img);
 
         var p = document.createElement('p');
-        p.textContent = fileName.replace(/\.[^/.]+$/, '').replace(/_/g, ' ');
+        p.textContent = fileName.replace(/_/g, ' ');
         mediaElement.appendChild(p);
-        // Speicherung des FileNames in der entsprechenden Variable
-        mediaElement.dataset.fileName = fileName;
+        // Speicherung des files in der entsprechenden Variable
+        mediaElement.dataset.fileName = file;
 
         mediaElement.addEventListener('click', function () {
-            loadJSON(fileName);
+            loadJSON(file);
         });
 
         mediaScroller.appendChild(mediaElement);
