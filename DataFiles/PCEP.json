@@ -69,7 +69,7 @@
         "question_type": "code",
         "question": "Wie lautet der Output nach Ausführung des folgenden CodeSnippets?",
         "code": "<span style='color:#00CEC7;'>print</span><span style='color:#FFD700;'>(</span><span style='color:#995BFF;'>1</span><span style='color:#FF3399;'>*</span><span style='color:#995BFF;'>2</span><span style='color:#FF3399;'>*</span><span style='color:#995BFF;'>3</span><span style='color:#FF3399;'>*</span><span style='color:#995BFF;'>1</span><span style='color:#FF3399;'>**</span><span style='color:#995BFF;'>6</span><span style='color:#FF3399;'>*</span><span style='color:#995BFF;'>3</span><span style='color:#FFD700;'>)</span>",
-        "correct_answer": [4],
+        "correct_answer": [1],
         "score": 2,
         "answer_type": "single",
         "possible_answers": {
@@ -84,7 +84,7 @@
         "title": "Frage 6",
         "question_type": "statements",
         "question": "Welche der folgenden Aussagen ist falsch?",
-        "correct_answer": [1],
+        "correct_answer": [2],
         "score": 2,
         "answer_type": "single",
         "possible_answers": {
